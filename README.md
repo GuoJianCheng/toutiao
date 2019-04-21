@@ -13,6 +13,8 @@ Redis入门以及Redis实现赞踩功能
 多种资讯排序算法
 JavaWeb项目测试和部署，课程总结回顾
 
+详细笔记介绍：https://blog.csdn.net/qq_35508033/article/details/89380838
+
 # quick-start
 
 [1项目基本配置](#项目基本配置)
