@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,7 +61,7 @@ public class LoginController {
     public String login(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
                       @RequestParam(value="rember", defaultValue = "0") int rememberme,
-                        HttpServletResponse response) {
+                      HttpServletResponse response) {
         try {
             Map<String, Object> map = userService.login(username, password);
             if (map.containsKey("ticket")) {

@@ -32,9 +32,6 @@ public class NewsController {
     private NewsService newsService;
 
     @Autowired
-    private AliService aliService;
-
-    @Autowired
     private QiniuService qiniuService;
 
     @Autowired
@@ -123,26 +120,8 @@ public class NewsController {
         return "redirect:/news/" + String.valueOf(newsId);
     }
 
-    @RequestMapping("/uploadImage/")
-    @ResponseBody
-    //这里使用阿里oss，有空把七牛云搞一下
-    public String uploadOSS(@RequestParam("file") MultipartFile file) {
-        try {
-            String fileUrl = aliService.saveImage(file);
-            if (fileUrl == null) {
-                //先错误后正确
-                return ToutiaoUtil.getJSONString(1, "上传图片失败");
-            }
-            return ToutiaoUtil.getJSONString(0, fileUrl);
-        } catch (IOException e) {
-            logger.error("上传失败" + e.getMessage());
-            return ToutiaoUtil.getJSONString(1, "上传失败");
-        }
-    }
-
     @RequestMapping("/uploadQiniu/")
     @ResponseBody
-    //这里使用阿里oss，有空把七牛云搞一下
     public String uploadQiniu(@RequestParam("file") MultipartFile file) {
         try {
             String fileUrl = qiniuService.saveImage(file);
@@ -156,38 +135,6 @@ public class NewsController {
             return ToutiaoUtil.getJSONString(1, "上传失败");
         }
     }
-
-//    @RequestMapping("/uploadImage/")
-//    @ResponseBody
-//    public String uploadImage(@RequestParam("file") MultipartFile file) {
-//        try {
-//            String fileUrl = newsService.saveImage(file);
-//            if (fileUrl == null) {
-//                //先错误后正确
-//                return ToutiaoUtil.getJSONString(1, "上传图片失败");
-//            }
-//            return ToutiaoUtil.getJSONString(0, fileUrl);
-//        } catch (IOException e) {
-//            logger.error("上传失败" + e.getMessage());
-//            return ToutiaoUtil.getJSONString(1, "上传失败");
-//        }
-//    }
-//
-//    @RequestMapping("/uploadImages/")
-//    @ResponseBody
-//    public String uploadImages(@RequestParam("files") MultipartFile[] files) {
-//        try {
-//            String fileUrl = newsService.saveImages(files);
-//            if (fileUrl == null) {
-//                //先错误后正确
-//                return ToutiaoUtil.getJSONString(1, "上传图片失败");
-//            }
-//            return ToutiaoUtil.getJSONString(0, fileUrl);
-//        } catch (IOException e) {
-//            logger.error("上传失败" + e.getMessage());
-//            return ToutiaoUtil.getJSONString(1, "上传失败");
-//        }
-//    }
 
     @RequestMapping(path = {"/image/"}, method = {RequestMethod.GET})
     @ResponseBody

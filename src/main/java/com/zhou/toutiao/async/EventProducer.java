@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by zhou on 2019/4/18.
  */
-// 事件生产者，负责把事件放进消息队列。
+// 事件生产者，负责把事件放进消息队列
 @Service
 public class EventProducer {
 
@@ -25,7 +25,6 @@ public class EventProducer {
             String json = JSONObject.toJSONString(eventModel);
             String key = RedisKeyUtil.getEventQueueKey();
             jedisAdapter.lpush(key, json);
-//        jedisAdapter.setObject(eventModel);
             return true;
         }catch (Exception e) {
             logger.error("事件放入队列失败" + e.getMessage());

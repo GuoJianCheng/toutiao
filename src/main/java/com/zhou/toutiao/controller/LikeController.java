@@ -34,9 +34,6 @@ public class LikeController {
     @Autowired
     EventProducer eventProducer;
 
-//    @Autowired
-//    EventProducer eventProducer;
-
     @RequestMapping(path = {"/like"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String like(@Param("newId") int newsId) {

@@ -8,7 +8,6 @@ import com.zhou.toutiao.util.ToutiaoUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.security.provider.MD5;
 
 import java.util.Date;
 import java.util.HashMap;
